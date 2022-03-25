@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 
 // define struct outside main
 struct Person {
@@ -24,4 +25,17 @@ int main(void){
 
     // dot operators also can be used to change struct data
     person1.salary = 57000;
+
+    // pointers make things a bit more complicated
+    struct Person* person3 = &person2;
+
+    // in order to dereference a pointer before processing the dot operator, use parentheses
+    (*person3).salary = 34000;
+
+    // an easier way to dereference a pointer is to use the arrow operator
+    person3->height = 43;
+
+    // remember that string assignment is a pain in the butt in c, need to use strcpy from string.h
+    strcpy(person3->name, "New Person");
+    strcpy((*person3).birthday, "11/11/1900");
 }
